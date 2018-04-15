@@ -6,11 +6,11 @@ DGITL coding homework
 	Create a virtual environment for a project
 
 	$ cd my_project_folder
-	$ virtualenv my_project
+	$ virtualenv -p python3 ENVname
 
 	Activate a virtual environment
 
-	$ source my_project/bin/activate
+	$ source ENVname/bin/activate
 
 	Install packages
 
