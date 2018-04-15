@@ -27,20 +27,10 @@ Install packages
 |Action|Endpoint|Method|Data|
 |---|---|---|---|
 |List|api/carplates/|GET||
-|Retrieve|api/carplates/<id>/|GET||
-|Create|api/carplates/|POST|Data:
-		{
-	        'plate_number': 'PPP777',
-	        'first_name': 'Kaliause',
-	        'last_name': 'Bekepuris'
-        }|
-|Update|api/carplates/<id>/|PUT|Data:
-		{
-	        'first_name': 'Kaliause',
-	        'last_name': 'Bekepuris'
-        }|	
-|Delete|api/carplates/<id>/|DELETE||
-
+|Retrieve|api/carplates/<id\>/|GET||
+|Create|api/carplates/|POST|{'plate_number': 'PPP777',<br />'first_name': 'Kaliause',<br />'last_name': 'Bekepuris'}|
+|Update|api/carplates/<id\>/|PUT|{'first_name': 'Kaliause',<br />'last_name': 'Bekepuris'}|	
+|Delete|api/carplates/<id\>/|DELETE||
 
 ## Tests
 
