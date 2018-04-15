@@ -32,6 +32,8 @@ Install packages
 |Update|api/carplates/<id\>/|PUT|{'first_name': 'Kaliause',<br />'last_name': 'Bekepuris'}|	
 |Delete|api/carplates/<id\>/|DELETE||
 
+##### AngularJS part is available at root link.
+
 ## Tests
 
 	python manage.py test
