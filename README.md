@@ -24,34 +24,23 @@ Install packages
 
 ## Documentation
 
-List
-	Endpoint: api/carplates/
-	Method: GET
-	
-Retrieve
-	Endpoint: api/carplates/<id>/
-	Method: GET
-	
-Create
-	Endpoint: api/carplates/
-	Method: POST
-	Data:
+|Action|Endpoint|Method|Data|
+|---|---|---|---|
+|List|api/carplates/|GET||
+|Retrieve|api/carplates/<id>/|GET||
+|Create|api/carplates/|POST|Data:
 		{
 	        'plate_number': 'PPP777',
 	        'first_name': 'Kaliause',
 	        'last_name': 'Bekepuris'
-        }
-Update
-	Endpoint: api/carplates/<id>/
-	Method: PUT
-	Data:
+        }|
+|Update|api/carplates/<id>/|PUT|Data:
 		{
 	        'first_name': 'Kaliause',
 	        'last_name': 'Bekepuris'
-        }
-Delete
-	Endpoint: api/carplates/<id>/
-	Method: DELETE
+        }|	
+|Delete|api/carplates/<id>/|DELETE||
+
 
 ## Tests
 
