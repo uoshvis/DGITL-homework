@@ -4,6 +4,8 @@ from carplates.models import CarPlate
 
 
 class CarPlateSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(view_name='api:carplates-detail')
+
     class Meta:
         model = CarPlate
         fields = '__all__'

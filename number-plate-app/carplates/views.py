@@ -14,7 +14,11 @@ class CarPlatesViewSet(viewsets.ViewSet):
         Get all existing car plates
         """
         queryset = CarPlate.objects.all()
-        serializer = CarPlateSerializer(queryset, many=True)
+        serializer = CarPlateSerializer(
+            queryset,
+            many=True,
+            context={'request': request}
+        )
         data = serializer.data
         return Response(data)
 
@@ -23,14 +27,17 @@ class CarPlatesViewSet(viewsets.ViewSet):
         Get single car plate data by id
         """
         obj = get_object_or_404(CarPlate, pk=pk)
-        serializer = CarPlateSerializer(obj)
+        serializer = CarPlateSerializer(obj, context={'request': request})
         return Response(serializer.data)
 
     def create(self, request):
-        serializer = CarPlateSerializer(data=request.data)
+        serializer = CarPlateSerializer(
+            data=request.data,
+            context={'request': request}
+        )
         if serializer.is_valid():
             queryset = CarPlate.objects.create(**serializer.validated_data)
-            data = CarPlateSerializer(queryset).data
+            data = CarPlateSerializer(queryset, context={'request': request}).data
             return Response(data, status=status.HTTP_201_CREATED)
         else:
             data = {'errors': serializer.errors}
@@ -53,7 +60,7 @@ class CarPlatesViewSet(viewsets.ViewSet):
             data = request.data.get(key)
             setattr(obj, key, data)
             obj.save()
-            data = CarPlateSerializer(obj).data
+            data = CarPlateSerializer(obj, context={'request': request}).data
         return Response(data)
 
     def destroy(self, request, pk=None):
