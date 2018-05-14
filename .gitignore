@@ -1,7 +1,9 @@
 # My ignores
+settings_secret.py
 ENV*/
 *.sqlite3
-migrations/
+number-plate-app/static/admin/
+number-plate-app/static/rest_framework/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
