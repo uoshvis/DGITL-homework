@@ -12,15 +12,18 @@ class SweetsSerializer(serializers.ModelSerializer):
         fields = [
             'url',
             'name',
-            'weight_grams',
-            'kcal',
+            'serving_grams',
+            'kcal_100',
+            'fat_100',
+            'carbohydrate_100',
+            'protein_100',
             'timestamp',
         ]
         read_only_fields = ['id', 'url']
         validators = [
             UniqueTogetherValidator(
                 queryset=SweetsData.objects.all(),
-                fields=('name', 'weight_grams')
+                fields=('name', 'serving_grams')
             )
         ]
 

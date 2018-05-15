@@ -10,8 +10,11 @@ class SweetsDataAPITestCase(APITestCase):
     def setUp(self):
         SweetsData.objects.create(
             name='Pupa',
-            weight_grams=100,
-            kcal=400,
+            serving_grams=100,
+            kcal_100=400,
+            fat_100=50,
+            carbohydrate_100=20,
+            protein_100=2
         )
 
     def test_single_sweet(self):
@@ -26,7 +29,14 @@ class SweetsDataAPITestCase(APITestCase):
         self.assertEqual(len(response.data), 1)
 
     def test_post_item(self):
-        data = {'name': 'Cake', 'weight_grams': 500, 'kcal': 4000}
+        data = {
+            'name': 'Blyn',
+            'serving_grams': 500,
+            'kcal_100': 300,
+            'fat_100': 150,
+            'carbohydrate_100': 30,
+            'protein_100': 70,
+        }
         url = api_reverse('api-sweets:sweet-listcreate')
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -42,7 +52,14 @@ class SweetsDataAPITestCase(APITestCase):
     def test_update_item(self):
         sweet = SweetsData.objects.first()
         url = sweet.get_api_url()
-        data = {'name': 'Pupa', 'kcal': 399, 'weight_grams': 100}
+        data = {
+            'name': 'Blyn',
+            'serving_grams': 550,
+            'kcal_100': 300,
+            'fat_100': 150,
+            'carbohydrate_100': 30,
+            'protein_100': 70,
+        }
         response = self.client.put(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response = self.client.post(url, data, format='json')
