@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='carplates/index.html')),
     url(r'^', include('carplates.urls')),
     url(r'^api2/postings/', include('postings.api.urls', namespace='api-postings')),
+    url(r'^api3/sweets/', include('sweets.urls', namespace='api-sweets')),
 ]
