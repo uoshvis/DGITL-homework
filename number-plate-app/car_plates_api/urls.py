@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.views.generic import TemplateView
+# from django.views.generic import TemplateView
 from rest_framework_jwt.views import obtain_jwt_token
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='API structure')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/auth/login/$', obtain_jwt_token, name='api-login'),
-    url(r'^$', TemplateView.as_view(template_name='carplates/index.html')),
-    url(r'^', include('carplates.urls')),
+    url(r'^$', schema_view),
+    # url(r'^$', TemplateView.as_view(template_name='carplates/index.html')),
+    # url(r'^', include('carplates.urls')),
     url(r'^api2/postings/', include('postings.api.urls', namespace='api-postings')),
     url(r'^api3/sweets/', include('sweets.urls', namespace='api-sweets')),
 ]
