@@ -26,7 +26,7 @@ SECRET_KEY = DJANGO_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['uoshvis.pythonanywhere.com',]
+ALLOWED_HOSTS = ['uoshvis.pythonanywhere.com', ]
 
 
 # Application definition
@@ -103,7 +103,7 @@ DATABASES = {
         'PASSWORD': DB_PASS,
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            },
+        },
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
