@@ -5,12 +5,13 @@ from sweets.models import SweetsData
 
 
 class SweetsSerializer(serializers.ModelSerializer):
-    url = serializers.SerializerMethodField(read_only=True)
+
+    # url = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = SweetsData
         fields = [
-            'url',
+            'id',
             'name',
             'serving_grams',
             'kcal_100',

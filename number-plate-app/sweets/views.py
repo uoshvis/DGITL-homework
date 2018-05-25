@@ -3,6 +3,7 @@ from rest_framework import generics, mixins
 
 from sweets.models import SweetsData
 from sweets.serializers import SweetsSerializer
+from datetime import datetime
 
 
 class SweetsDataAPIView(mixins.CreateModelMixin, generics.ListAPIView):
@@ -12,11 +13,15 @@ class SweetsDataAPIView(mixins.CreateModelMixin, generics.ListAPIView):
 
     def get_queryset(self):
         qs = SweetsData.objects.all()
-        query = self.request.GET.get('q')
-        if query is not None:
+        query_timestamp = self.request.GET.get('timestamp')
+        if query_timestamp:
+            timestamp = datetime.strptime(
+                query_timestamp,
+                '%Y-%m-%dT%H:%M:%S.%fZ'
+            )
             qs = qs.filter(
-                Q(name__icontains=query)
-            ).distinct()
+                Q(timestamp__gte=timestamp)
+            )
         return qs
 
     def post(self, request, *args, **kwargs):
