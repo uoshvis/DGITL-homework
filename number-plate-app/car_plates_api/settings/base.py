@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'carplates',
     'postings',
     'sweets',
+    'facts'
 ]
 
 REST_FRAMEWORK = {

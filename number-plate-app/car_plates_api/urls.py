@@ -29,4 +29,5 @@ urlpatterns = [
     # url(r'^', include('carplates.urls')),
     url(r'^api2/postings/', include('postings.api.urls', namespace='api-postings')),
     url(r'^api3/sweets/', include('sweets.urls', namespace='api-sweets')),
+    url(r'^api3/facts/', include('facts.urls', namespace='api-facts')),
 ]
