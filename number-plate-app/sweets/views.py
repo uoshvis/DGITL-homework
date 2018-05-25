@@ -14,11 +14,8 @@ class SweetsDataAPIView(mixins.CreateModelMixin, generics.ListAPIView):
     def get_queryset(self):
         qs = SweetsData.objects.all()
         query_timestamp = self.request.GET.get('timestamp')
-        if query_timestamp:
-            timestamp = datetime.strptime(
-                query_timestamp,
-                '%Y-%m-%dT%H:%M:%S.%fZ'
-            )
+        if query_timestamp and query_timestamp.isdigit():
+            timestamp = datetime.fromtimestamp(float(query_timestamp))
             qs = qs.filter(
                 Q(timestamp__gte=timestamp)
             )
