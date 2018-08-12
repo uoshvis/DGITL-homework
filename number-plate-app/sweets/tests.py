@@ -10,7 +10,6 @@ class SweetsDataAPITestCase(APITestCase):
     def setUp(self):
         SweetsData.objects.create(
             name='Pupa',
-            serving_grams=100,
             kcal_100=400,
             fat_100=50,
             carbohydrate_100=20,
@@ -31,7 +30,6 @@ class SweetsDataAPITestCase(APITestCase):
     def test_post_item(self):
         data = {
             'name': 'Blyn',
-            'serving_grams': 500,
             'kcal_100': 300,
             'fat_100': 150,
             'carbohydrate_100': 30,
@@ -54,7 +52,6 @@ class SweetsDataAPITestCase(APITestCase):
         url = sweet.get_api_url()
         data = {
             'name': 'Blyn',
-            'serving_grams': 550,
             'kcal_100': 300,
             'fat_100': 150,
             'carbohydrate_100': 30,

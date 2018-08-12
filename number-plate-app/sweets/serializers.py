@@ -13,7 +13,6 @@ class SweetsSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'name',
-            'serving_grams',
             'kcal_100',
             'fat_100',
             'carbohydrate_100',
@@ -24,7 +23,7 @@ class SweetsSerializer(serializers.ModelSerializer):
         validators = [
             UniqueTogetherValidator(
                 queryset=SweetsData.objects.all(),
-                fields=('name', 'serving_grams')
+                fields=('name',)
             )
         ]
 
