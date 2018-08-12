@@ -17,6 +17,7 @@ class SweetsSerializer(serializers.ModelSerializer):
             'fat_100',
             'carbohydrate_100',
             'protein_100',
+            'sugar_100',
             'timestamp',
         ]
         read_only_fields = ['id', 'url']

@@ -8,6 +8,7 @@ class SweetsData(models.Model):
     fat_100 = models.FloatField()
     carbohydrate_100 = models.FloatField()
     protein_100 = models.FloatField()
+    sugar_100 = models.FloatField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

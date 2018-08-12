@@ -13,7 +13,8 @@ class SweetsDataAPITestCase(APITestCase):
             kcal_100=400,
             fat_100=50,
             carbohydrate_100=20,
-            protein_100=2
+            protein_100=2,
+            sugar_100=25.2
         )
 
     def test_single_sweet(self):
@@ -34,6 +35,7 @@ class SweetsDataAPITestCase(APITestCase):
             'fat_100': 150,
             'carbohydrate_100': 30,
             'protein_100': 70,
+            'sugar_100': 25.2,
         }
         url = api_reverse('api-sweets:sweet-listcreate')
         response = self.client.post(url, data, format='json')
@@ -56,6 +58,7 @@ class SweetsDataAPITestCase(APITestCase):
             'fat_100': 150,
             'carbohydrate_100': 30,
             'protein_100': 70,
+            'sugar_100': 25.2,
         }
         response = self.client.put(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
