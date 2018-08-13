@@ -3,7 +3,7 @@ from rest_framework.reverse import reverse as api_reverse
 
 
 class SweetsData(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     kcal_100 = models.FloatField()
     fat_100 = models.FloatField()
     carbohydrate_100 = models.FloatField()
