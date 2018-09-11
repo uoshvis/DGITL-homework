@@ -6,23 +6,41 @@ from facts.models import Fact
 from facts.serializers import FactsSerializer
 
 
-class CreateModelMixinMany(mixins.CreateModelMixin):
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(
-            data=request.data,
-            many=isinstance(request.data, list)
-        )
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(
-            serializer.data,
-            status=status.HTTP_201_CREATED,
-            headers=headers
-        )
+# class CreateModelMixinMany(mixins.CreateModelMixin):
+#     def create(self, request, *args, **kwargs):
+#         serializer = self.get_serializer(
+#             data=request.data,
+#             many=isinstance(request.data, list)
+#         )
+#         serializer.is_valid(raise_exception=True)
+#         self.perform_create(serializer)
+#         headers = self.get_success_headers(serializer.data)
+#         return Response(
+#             serializer.data,
+#             status=status.HTTP_201_CREATED,
+#             headers=headers
+#         )
 
 
-class FactsAPIView(CreateModelMixinMany, generics.ListAPIView):
+# class FactsAPIView(CreateModelMixinMany, generics.ListAPIView):
+
+#     lookup_field = 'pk'
+#     serializer_class = FactsSerializer
+
+#     def get_queryset(self):
+#         qs = Fact.objects.all()
+#         query = self.request.GET.get('q')
+#         if query is not None:
+#             qs = qs.filter(
+#                 Q(name__icontains=query)
+#             ).distinct()
+#         return qs
+
+#     def post(self, request, *args, **kwargs):
+#         return self.create(request, *args, **kwargs)
+
+
+class FactsAPIView(generics.ListAPIView):
 
     lookup_field = 'pk'
     serializer_class = FactsSerializer
@@ -36,11 +54,8 @@ class FactsAPIView(CreateModelMixinMany, generics.ListAPIView):
             ).distinct()
         return qs
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
 
-
-class FactsRudView(generics.RetrieveUpdateDestroyAPIView):
+class FactsRudView(generics.RetrieveAPIView):
 
     lookup_field = 'pk'
     serializer_class = FactsSerializer
