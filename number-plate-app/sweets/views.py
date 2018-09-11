@@ -51,7 +51,7 @@ class SweetsDataAPIView(generics.ListAPIView):
 #         return {'request': self.request}
 
 
-class SweetsDataRudView(generics.RetrieveUpdateDestroyAPIView):
+class SweetsDataRudView(generics.RetrieveAPIView):
 
     lookup_field = 'pk'
     serializer_class = SweetsSerializer
